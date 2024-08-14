@@ -4,7 +4,7 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("lists", function (table) {
-    table.bigIncrements("list_id"); // BIGINT primary key with auto-increment
+    table.increments("list_id"); // BIGINT primary key with auto-increment
     table.string("list_name", 100); // VARCHAR(100) for list name
     table.bigInteger("circle_id"); // BIGINT for circle ID
     table.bigInteger("count_of_votes"); // BIGINT for count of votes

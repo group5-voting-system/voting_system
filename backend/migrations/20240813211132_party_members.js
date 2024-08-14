@@ -4,7 +4,7 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("party_members", function (table) {
-    table.bigIncrements("member_id"); // BIGINT primary key with auto-increment
+    table.increments("member_id"); // BIGINT primary key with auto-increment
     table.bigInteger("national_id").notNullable(); // BIGINT for national ID
     table.bigInteger("party_id").notNullable(); // BIGINT for party ID
     table.boolean("is_party_commissioner").defaultTo(false); // BOOLEAN for party commissioner with default value FALSE

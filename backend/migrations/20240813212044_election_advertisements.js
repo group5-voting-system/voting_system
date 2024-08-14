@@ -4,7 +4,7 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("election_advertisements", function (table) {
-    table.bigIncrements("id").primary(); // BIGINT with auto-increment as primary key
+    table.increments("id").primary(); // BIGINT with auto-increment as primary key
     table.bigInteger("national_id").notNullable(); // BIGINT for national ID
     table.bigInteger("list_id"); // BIGINT for list ID
     table.integer("circle_id"); // INT for circle ID

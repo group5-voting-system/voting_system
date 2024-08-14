@@ -11,6 +11,8 @@ exports.up = function (knex) {
     table.string("first_candidate_list", 255); // VARCHAR(255) for the first candidate's list
     table.string("second_candidate", 255); // VARCHAR(255) for the second candidate
     table.string("second_candidate_list", 255); // VARCHAR(255) for the second candidate's list
+    table.date("start_date"); // DATE for start date
+    table.date("end_date"); // DATE for end date
     table.string("status", 255); // VARCHAR(255) for status
     table.text("zoom_link"); // TEXT for Zoom link
   });

@@ -4,7 +4,7 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("party_candidate", function (table) {
-    table.bigIncrements("candidate_id"); // BIGINT primary key with auto-increment
+    table.increments("candidate_id"); // BIGINT primary key with auto-increment
     table.bigInteger("national_id").unsigned(); // BIGINT for national ID
     table.bigInteger("list_id").unsigned(); // BIGINT for list ID
 
