@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./page/Header"; // قم باستيراد مكون Header
 import Home from "./page/Home";
@@ -9,8 +10,16 @@ import Home from "./page/Home";
 // import Results from "./Results"; // افترض أنك أنشأت مكون Results
 // import Contact from "./Contact"; // افترض أنك أنشأت مكون Contact
 
+
+import ArabicGrid from './cities'
+import './App.css'
+import ElectionCircleSelection from './listtype'
+
+
+
 function App() {
   return (
+
     <Router>
       <Header /> {/* إضافة Header */}
       <Routes>
@@ -23,6 +32,8 @@ function App() {
       </Routes>
     </Router>
   );
+ 
+  
 }
 
 export default App;
