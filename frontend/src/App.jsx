@@ -14,6 +14,9 @@ import Home from "./page/Home";
 import ArabicGrid from './cities'
 import './App.css'
 import ElectionCircleSelection from './listtype'
+import VotingCandidatesGrid from './local_voting.jsx'
+
+
 
 
 
@@ -34,6 +37,7 @@ function App() {
   );
  
   
+
 }
 
 export default App;
