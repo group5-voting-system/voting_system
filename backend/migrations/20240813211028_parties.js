@@ -4,8 +4,8 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("parties", function (table) {
-    table.increments("party_id"); // BIGINT primary key with auto-increment
-    table.string("party_name", 100); // VARCHAR(100) for the party name
+    table.increments("PARTY_ID"); // BIGINT primary key with auto-increment
+    table.string("PARTY_NAME", 100); // VARCHAR(100) for the party name
   });
 };
 
