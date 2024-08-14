@@ -4,27 +4,28 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("election_advertisements", function (table) {
-    table.increments("id").primary(); // BIGINT with auto-increment as primary key
-    table.bigInteger("national_id").notNullable(); // BIGINT for national ID
-    table.bigInteger("list_id"); // BIGINT for list ID
-    table.integer("circle_id"); // INT for circle ID
-    table.string("title", 255); // VARCHAR(255) for title
-    table.text("description").notNullable(); // TEXT for description (equivalent to VARCHAR(4000))
-    table.text("url").defaultTo("DUMMY DATA"); // TEXT for URL with default value
-    table.string("status", 255).defaultTo("PENDING"); // VARCHAR(255) for status with default value
-    table.date("start_date"); // DATE for start date
-    table.date("end_date"); // DATE for end date
-    table.timestamp("creation_date").defaultTo(knex.fn.now()); // TIMESTAMP with default current time
-    table.integer("payment_id"); // INT for payment ID
-    table.bigInteger("like_count").defaultTo(0); // BIGINT for like count with default value
+    table.increments("ID").primary(); // BIGINT with auto-increment as primary key
+    table.bigInteger("NATIONAL_ID").notNullable(); // BIGINT for national ID
+    table.bigInteger("LIST_ID"); // BIGINT for list ID
+    table.integer("CIRCLE_ID"); // INT for circle ID
+    table.string("TITLE", 255); // VARCHAR(255) for title
+    table.text("DESCRIPTION").notNullable(); // TEXT for description (equivalent to VARCHAR(4000))
+    table.text("URL").defaultTo("DUMMY DATA"); // TEXT for URL with default value
+    table.string("STATUS", 255).defaultTo("PENDING"); // VARCHAR(255) for status with default value
+    table.date("START_DATE"); // DATE for start date
+    table.date("END_DATE"); // DATE for end date
+    table.timestamp("CREATION_DATE").defaultTo(knex.fn.now()); // TIMESTAMP with default current time
+    table.integer("PAYMENT_ID"); // INT for payment ID
+    table.bigInteger("LIKE_COUNT").defaultTo(0); // BIGINT for like count with default value
 
     // Foreign key constraints
     table
-      .foreign("payment_id")
-      .references("payment_id")
+      .foreign("PAYMENT_ID")
+      .references("PAYMENT_ID")
       .inTable("paypal_payments");
-    table.foreign("national_id").references("national_id").inTable("users");
-    table.foreign("circle_id").references("circle_id").inTable("circles");
+    table.foreign("NATIONAL_ID").references("NATIONAL_ID").inTable("users");
+    table.foreign("CIRCLE_ID").references("CIRCLE_ID").inTable("circles");
+    table.foreign("LIST_ID").references("LIST_ID").inTable("lists");
   });
 };
 

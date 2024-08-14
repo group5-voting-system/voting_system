@@ -4,14 +4,14 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("party_members", function (table) {
-    table.increments("member_id"); // BIGINT primary key with auto-increment
-    table.bigInteger("national_id").notNullable(); // BIGINT for national ID
-    table.bigInteger("party_id").notNullable(); // BIGINT for party ID
-    table.boolean("is_party_commissioner").defaultTo(false); // BOOLEAN for party commissioner with default value FALSE
+    table.increments("MEMBER_ID"); // BIGINT primary key with auto-increment
+    table.bigInteger("NATIONAL_ID").notNullable(); // BIGINT for national ID
+    table.bigInteger("PARTY_ID").notNullable(); // BIGINT for party ID
+    table.boolean("IS_PARTY_COMMISSIONER").defaultTo(false); // BOOLEAN for party commissioner with default value FALSE
 
     // Foreign key constraints
-    table.foreign("party_id").references("party_id").inTable("parties");
-    table.foreign("national_id").references("national_id").inTable("users");
+    table.foreign("PARTY_ID").references("PARTY_ID").inTable("parties");
+    table.foreign("NATIONAL_ID").references("NATIONAL_ID").inTable("users");
   });
 };
 
