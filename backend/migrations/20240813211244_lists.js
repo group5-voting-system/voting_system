@@ -4,14 +4,14 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("lists", function (table) {
-    table.increments("list_id"); // BIGINT primary key with auto-increment
-    table.string("list_name", 100); // VARCHAR(100) for list name
-    table.bigInteger("circle_id"); // BIGINT for circle ID
-    table.bigInteger("count_of_votes"); // BIGINT for count of votes
-    table.enu("list_type", ["LOCAL", "PARTY"]); // ENUM for list type with values 'LOCAL' and 'PARTY'
+    table.increments("LIST_ID"); // BIGINT primary key with auto-increment
+    table.string("LIST_NAME", 100); // VARCHAR(100) for list name
+    table.bigInteger("CIRCLE_ID"); // BIGINT for circle ID
+    table.bigInteger("COUNT_OF_VOTES"); // BIGINT for count of votes
+    table.enu("LIST_TYPE", ["LOCAL", "PARTY"]); // ENUM for list type with values 'LOCAL' and 'PARTY'
 
     // Foreign key constraint
-    table.foreign("circle_id").references("circle_id").inTable("circles");
+    table.foreign("CIRCLE_ID").references("CIRCLE_ID").inTable("circles");
   });
 };
 

@@ -4,8 +4,8 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("circles", function (table) {
-    table.increments("circle_id").primary();
-    table.string("circle_name", 100).notNullable();
+    table.increments("CIRCLE_ID").primary();
+    table.string("CIRCLE_NAME", 100).notNullable();
   });
 };
 

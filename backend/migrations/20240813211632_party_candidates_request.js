@@ -4,19 +4,20 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("party_candidates_request", function (table) {
-    table.increments("request_id"); // INT primary key with auto-increment
-    table.bigInteger("list_id").unsigned().notNullable(); // BIGINT for list ID
-    table.string("city", 255).notNullable(); // VARCHAR(255) for city
-    table.integer("circle_id").notNullable(); // INT for circle ID
-    table.bigInteger("national_id").unsigned(); // BIGINT for national ID
-    table.string("status", 255).notNullable().defaultTo("PENDING"); // Status with default value
+    table.increments("REQUEST_ID"); // INT primary key with auto-increment
+    table.bigInteger("LIST_ID").unsigned().notNullable(); // BIGINT for list ID
+    table.string("CITY", 255).notNullable(); // VARCHAR(255) for city
+    table.integer("CIRCLE_ID").notNullable(); // INT for circle ID
+    table.bigInteger("NATIONAL_ID").unsigned(); // BIGINT for national ID
+    table.string("STATUS", 255).notNullable().defaultTo("PENDING"); // Status with default value
 
     // Foreign key constraints
-    table.foreign("list_id").references("list_id").inTable("lists");
-    table.foreign("national_id").references("national_id").inTable("users");
-    table.foreign("circle_id").references("circle_id").inTable("circles");
+    table.foreign("LIST_ID").references("LIST_ID").inTable("lists");
+    table.foreign("NATIONAL_ID").references("NATIONAL_ID").inTable("users");
+    table.foreign("CIRCLE_ID").references("CIRCLE_ID").inTable("circles");
   });
 };
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }

@@ -4,13 +4,13 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("party_candidate", function (table) {
-    table.increments("candidate_id"); // BIGINT primary key with auto-increment
-    table.bigInteger("national_id").unsigned(); // BIGINT for national ID
-    table.bigInteger("list_id").unsigned(); // BIGINT for list ID
+    table.increments("CANDIDATE_ID"); // BIGINT primary key with auto-increment
+    table.bigInteger("NATIONAL_ID").unsigned(); // BIGINT for national ID
+    table.bigInteger("LIST_ID").unsigned(); // BIGINT for list ID
 
     // Foreign key constraints
-    table.foreign("national_id").references("national_id").inTable("users");
-    table.foreign("list_id").references("list_id").inTable("lists");
+    table.foreign("NATIONAL_ID").references("NATIONAL_ID").inTable("users");
+    table.foreign("LIST_ID").references("LIST_ID").inTable("lists");
   });
 };
 
