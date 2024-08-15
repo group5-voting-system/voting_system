@@ -3,18 +3,21 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.createTable("users", function (table) {
-    table.bigInteger("NATIONAL_ID").primary();
-    table.string("FULL_NAME", 255).notNullable();
-    table.string("EMAIL", 255).notNullable();
-    table.string("PASSWORD", 255).defaultTo("");
-    table.integer("CIRCLE_ID").notNullable();
-    table.string("GENDER", 255).notNullable();
-    table.string("RELIGION", 255).notNullable();
-    table.date("BIRTH_DATE").notNullable();
-    table.boolean("IS_LOCAL_VOTE").defaultTo(false);
-    table.boolean("IS_PARTY_VOTE").defaultTo(false);
-    table.foreign("CIRCLE_ID").references("CIRCLE_ID").inTable("circles");
+  return knex.schema.createTable("USERS", function (table) {
+    table.bigInteger("NATIONAL_ID").primary(); // BIGINT IDENTITY COLUMN for national ID
+    table.string("FULL_NAME", 255).notNullable(); // VARCHAR(255) for full name
+    table.string("EMAIL", 255).notNullable(); // VARCHAR(255) for email
+    table.string("PASSWORD", 255); // VARCHAR(255) for password
+    table.integer("CIRCLE_ID").notNullable(); // INT for circle ID
+    table.string("GENDER", 255).notNullable(); // VARCHAR(255) for gender
+    table.string("RELEGION", 255).notNullable(); // VARCHAR(255) for religion
+    table.date("BIRTH_DATE").notNullable(); // DATE for birth date
+    table.boolean("IS_LOCAL_VOTE").defaultTo(false); // BOOLEAN for local vote with default value FALSE
+    table.boolean("IS_PARTY_VOTE").defaultTo(false); // BOOLEAN for party vote with default value FALSE
+    table.string("OTB", 255).nullable(); // VARCHAR(255) for optional column
+
+    // Foreign key constraint
+    table.foreign("CIRCLE_ID").references("CIRCLE_ID").inTable("CIRCLES");
   });
 };
 
@@ -23,5 +26,5 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-  return knex.schema.dropTable("users");
+  return knex.schema.dropTableIfExists("USERS"); // Drop the USERS table if it exists
 };
