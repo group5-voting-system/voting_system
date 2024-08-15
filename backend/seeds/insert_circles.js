@@ -4,19 +4,19 @@
  */
 // exports.seed = async function (knex) {
 //   // Deletes ALL existing entries
-//   await knex("circles").del();
-//   await knex("circles").insert([{ CIRCLE_NAME: "عمان الأولى" }]);
-//   await knex("circles").insert([{ CIRCLE_NAME: "الزرقاء الأولى" }]);
-//   await knex("circles").insert([{ CIRCLE_NAME: "عمان الثالثه" }]);
+//   await knex("CIRCLES").del();
+//   await knex("CIRCLES").insert([{ CIRCLE_NAME: "عمان الأولى" }]);
+//   await knex("CIRCLES").insert([{ CIRCLE_NAME: "الزرقاء الأولى" }]);
+//   await knex("CIRCLES").insert([{ CIRCLE_NAME: "عمان الثالثه" }]);
 // };
 
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex("users")
+  return knex("USERS")
     .del()
     .then(function () {
       // Inserts seed entries
-      return knex("users").insert([
+      return knex("USERS").insert([
         // {
         //   NATIONAL_ID: "2000000201",
         //   FULL_NAME: "ريم أحمد سعيد النعيمي",
