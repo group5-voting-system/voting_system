@@ -7,14 +7,14 @@ exports.up = function (knex) {
     table.bigInteger("NATIONAL_ID").primary(); // BIGINT IDENTITY COLUMN for national ID
     table.string("FULL_NAME", 255).notNullable(); // VARCHAR(255) for full name
     table.string("EMAIL", 255).notNullable(); // VARCHAR(255) for email
-    table.string("PASSWORD", 255); // VARCHAR(255) for password
     table.integer("CIRCLE_ID").notNullable(); // INT for circle ID
-    table.string("GENDER", 255).notNullable(); // VARCHAR(255) for gender
-    table.string("RELEGION", 255).notNullable(); // VARCHAR(255) for religion
-    table.date("BIRTH_DATE").notNullable(); // DATE for birth date
     table.boolean("IS_LOCAL_VOTE").defaultTo(false); // BOOLEAN for local vote with default value FALSE
     table.boolean("IS_PARTY_VOTE").defaultTo(false); // BOOLEAN for party vote with default value FALSE
-    table.string("OTB", 255).nullable(); // VARCHAR(255) for optional column
+    table.string("PASSWORD", 255); // VARCHAR(255) for password
+    table.string("GENDER", 255).notNullable(); // VARCHAR(255) for gender
+    table.string("RELIGION", 255).notNullable(); // VARCHAR(255) for religion
+    table.date("BIRTH_DATE").notNullable(); // DATE for birth date
+    table.string("OTB", 255).defaultTo(""); // VARCHAR(255) for optional column
 
     // Foreign key constraint
     table.foreign("CIRCLE_ID").references("CIRCLE_ID").inTable("CIRCLES");

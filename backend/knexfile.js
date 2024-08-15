@@ -4,7 +4,7 @@ module.exports = {
     connection: {
       host: "localhost",
       user: "postgres",
-      password: "Hashem",
+      password: "hashem",
       database: "voting-system2",
       port: 5432, 
     },

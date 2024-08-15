@@ -2,22 +2,22 @@ const knex = require('../db/knex');
 
 class Voter {
   static getAll() {
-    return knex('users').select('*');
+    return knex('USERS').select('*');
   }
 
   static getById(id) {
-    return knex('users').where('NATIONAL_ID', id).first();
+    return knex('USERS').where('NATIONAL_ID', id).first();
   }
 
   static create(voterData) {
-    return knex('users').insert(voterData).returning('*');
+    return knex('USERS').insert(voterData).returning('*');
   }
   
   static update(id, voterData) {
-   return knex('users').where('NATIONAL_ID', id).update(voterData).returning('*'); 
+   return knex('USERS').where('NATIONAL_ID', id).update(voterData).returning('*'); 
   }
   static delete(id) {
-    return knex('users').where('NATIONAL_ID', id).del();
+    return knex('USERS').where('NATIONAL_ID', id).del();
   }
 }
 
