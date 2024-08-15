@@ -14,7 +14,6 @@ exports.up = function (knex) {
     table.date("BIRTH_DATE").notNullable();
     table.boolean("IS_LOCAL_VOTE").defaultTo(false);
     table.boolean("IS_PARTY_VOTE").defaultTo(false);
-
     table.foreign("CIRCLE_ID").references("CIRCLE_ID").inTable("circles");
   });
 };
