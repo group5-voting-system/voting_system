@@ -4,7 +4,7 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("PARTY_CANDIDATE", function (table) {
-    table.bigInteger("CANDIDATE_ID").primary(); // BIGINT primary key for candidate ID
+    table.increments("CANDIDATE_ID").primary(); // BIGINT primary key for candidate ID
     table.bigInteger("NATIONAL_ID"); // BIGINT for national ID
     table.bigInteger("LIST_ID"); // BIGINT for list ID
     table.boolean("IS_APROVED").defaultTo(false); // BOOLEAN with default value FALSE for approved status
