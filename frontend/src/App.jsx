@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./page/Header"; // قم باستيراد مكون Header
 import Home from "./page/Home";
@@ -9,22 +8,18 @@ import Home from "./page/Home";
 // import Services from "./Services"; // افترض أنك أنشأت مكون Services
 // import Results from "./Results"; // افترض أنك أنشأت مكون Results
 // import Contact from "./Contact"; // افترض أنك أنشأت مكون Contact
+import PartyCandidatesRequestForm from "./CandidatesRequest.jsx";
 
-
-import ArabicGrid from './cities'
-import './App.css'
-import ElectionCircleSelection from './listtype'
-import VotingCandidatesGrid from './local_voting.jsx'
-
-
-
-
+import ArabicGrid from "./cities";
+import "./App.css";
+import ElectionCircleSelection from "./listtype";
+import VotingCandidatesGrid from "./local_voting.jsx";
 
 function App() {
   return (
-
     <Router>
       <Header /> {/* إضافة Header */}
+      <PartyCandidatesRequestForm />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/area" element={<ArabicGrid/>} />
@@ -39,9 +34,6 @@ function App() {
       </Routes>
     </Router>
   );
- 
-  
-
 }
 
 export default App;
