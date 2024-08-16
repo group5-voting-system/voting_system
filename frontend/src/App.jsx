@@ -22,6 +22,10 @@ function App() {
       <PartyCandidatesRequestForm />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/area" element={<ArabicGrid/>} />
+        <Route path="/type" element={<ElectionCircleSelection/>} />
+        <Route path="/localVote" element={<VotingCandidatesGrid/>} />
+
         {/* <Route path="/vote" element={<Vote />} />
         <Route path="/apply" element={<Apply />} />
         <Route path="/services" element={<Services />} />
