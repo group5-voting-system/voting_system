@@ -7,12 +7,12 @@ exports.up = function (knex) {
     table.increments("ID").primary(); // INT primary key with auto-increment
     table.bigInteger("NATIONAL_ID").unsigned(); // BIGINT for national ID
     table.string("MESSAGE", 255); // VARCHAR(255) for message
-    table.string("STATUS", 255); // VARCHAR(255) for status
-    table.bigInteger("ADMIN_ID").unsigned(); // BIGINT for admin ID
+    
+    table.boolean("ADMIN_ID").notNullable(); // BIGINT for admin ID
 
     // Foreign key constraints
     table.foreign("NATIONAL_ID").references("NATIONAL_ID").inTable("users");
-    table.foreign("ADMIN_ID").references("ADMIN_ID").inTable("admin");
+  
   });
 };
 
