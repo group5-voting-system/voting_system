@@ -3,11 +3,11 @@ import { FiSearch, FiEdit2, FiTrash2 } from 'react-icons/fi';
 
 const VotersPanel = () => {
   const [voters, setVoters] = useState([
-    { id: 1, name: 'أحمد محمد', email: 'ahmed@example.com', status: 'نشط' },
-    { id: 2, name: 'فاطمة علي', email: 'fatima@example.com', status: 'غير نشط' },
-    { id: 3, name: 'محمود حسن', email: 'mahmoud@example.com', status: 'نشط' },
-    { id: 4, name: 'زينب أحمد', email: 'zainab@example.com', status: 'نشط' },
-    { id: 5, name: 'عمر خالد', email: 'omar@example.com', status: 'غير نشط' },
+    { id: 1, name: 'أحمد محمد', email: '8001435931', status: 'true' },
+    { id: 2, name: 'فاطمة علي', email: '00213124125', status: 'false' },
+    { id: 3, name: 'محمود حسن', email: '09841251', status: 'false' },
+    { id: 4, name: 'زينب أحمد', email: '1230982908', status: 'true' },
+    { id: 5, name: 'عمر خالد', email: '1284321', status: 'false' },
   ]);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -18,7 +18,7 @@ const VotersPanel = () => {
 
   const toggleVoterStatus = (id) => {
     setVoters(voters.map(voter =>
-      voter.id === id ? { ...voter, status: voter.status === 'نشط' ? 'غير نشط' : 'نشط' } : voter
+      voter.id === id ? { ...voter, status: voter.status === 'true' ? 'false' : 'true' } : voter
     ));
   };
 
@@ -47,9 +47,9 @@ const VotersPanel = () => {
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الاسم</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">البريد الإلكتروني</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الحالة</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الإجراءات</th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الرقم الوطني</th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">القائمةالحزبية</th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">القائمةالمحلية</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -59,19 +59,18 @@ const VotersPanel = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-right">{voter.email}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-right">
                   <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                    voter.status === 'نشط' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                    voter.status === 'true' ? 'bg-green-100 text-green-800' : 'bg-red-500 text-white'
                   }`}>
                     {voter.status}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-right">
-                  <button onClick={() => toggleVoterStatus(voter.id)} className="text-indigo-600 hover:text-indigo-900 ml-3">
-                    <FiEdit2 className="inline-block ml-1" /> تعديل
-                  </button>
-                  <button className="text-red-600 hover:text-red-900">
-                    <FiTrash2 className="inline-block ml-1" /> حذف
-                  </button>
-                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-right">
+                  <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                    voter.status === 'true' ? 'bg-green-100 text-green-800' : 'bg-red-500 text-white'
+                  }`}>
+                    {voter.status}
+                    </span>
+               </td>
               </tr>
             ))}
           </tbody>

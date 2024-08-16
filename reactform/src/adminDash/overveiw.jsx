@@ -1,12 +1,30 @@
-import React from 'react';
-import { FiUsers, FiCalendar, FiCheckSquare } from 'react-icons/fi';
+import React, { useState, useEffect } from 'react';
+import { FiUsers, FiList, FiFlag } from 'react-icons/fi';
+import axios from 'axios';
 
 const OverviewPanel = () => {
-  const stats = [
-    { name: 'إجمالي الناخبين المسجلين', value: '10,000', icon: FiUsers, color: 'bg-blue-500' },
-    { name: 'الانتخابات النشطة', value: '3', icon: FiCalendar, color: 'bg-green-500' },
-    { name: 'الأصوات الحديثة', value: '5,678', icon: FiCheckSquare, color: 'bg-purple-500' },
-  ];
+  const [stats, setStats] = useState([
+    { name: 'إجمالي الناخبين', value: '0', icon: FiUsers, color: 'bg-blue-500' },
+    { name: 'إجمالي القوائم', value: '0', icon: FiList, color: 'bg-green-500' },
+    { name: 'القوائم الحزبية', value: '0', icon: FiFlag, color: 'bg-purple-500' },
+  ]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/overview-stats');
+        setStats([
+          { ...stats[0], value: response.data.totalVoters },
+          { ...stats[1], value: response.data.totalLists },
+          { ...stats[2], value: response.data.totalPartyLists },
+        ]);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -36,13 +54,13 @@ const OverviewPanel = () => {
         <h3 className="text-lg leading-6 font-medium text-gray-900">إجراءات سريعة</h3>
         <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium">
-            إنشاء انتخابات جديدة
+            إنشاء قائمة جديدة
           </button>
           <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium">
-            عرض أحدث النتائج
+            عرض تفاصيل القوائم
           </button>
           <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm font-medium">
-            إدارة الناخبين
+            إدارة الأصوات
           </button>
         </div>
       </div>

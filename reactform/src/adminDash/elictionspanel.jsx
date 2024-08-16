@@ -3,9 +3,8 @@ import { FiCalendar, FiClock, FiUsers } from 'react-icons/fi';
 
 const ElectionsPanel = () => {
   const [elections, setElections] = useState([
-    { id: 1, name: 'الانتخابات الرئاسية 2024', date: '2024-11-03', status: 'قادمة' },
-    { id: 2, name: 'انتخابات المجلس المحلي', date: '2024-12-15', status: 'قادمة' },
-    { id: 3, name: 'انتخابات البرلمان', date: '2024-12-28', status: 'قادمة' },
+    { id: 2, name: 'انتخابات البلدية', date: '2024-12-15', status: 'قادمة' },
+    { id: 3, name: 'انتخابات البرلمان', date: '2024-12-28', status: 'بدأت' }
   ]);
 
   return (

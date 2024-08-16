@@ -80,9 +80,10 @@ const CandidatesPanel = () => {
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الاسم</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الحزب</th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">عدد الاصوات</th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">القائمة</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الإجراءات</th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">نوع القائمة</th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">نوع المقعد</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -93,12 +94,11 @@ const CandidatesPanel = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-right">{candidate.list}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-right">
                   <button className="text-indigo-600 hover:text-indigo-900 ml-3">
-                    <FiEdit2 className="inline-block ml-1" /> تعديل
+                   حزبية  
                   </button>
-                  <button className="text-red-600 hover:text-red-900">
-                    <FiTrash2 className="inline-block ml-1" /> حذف
-                  </button>
+                 
                 </td>
+                <td className='flex justify-end mr-7 mt-5'><h1>كوتا</h1></td>
               </tr>
             ))}
           </tbody>

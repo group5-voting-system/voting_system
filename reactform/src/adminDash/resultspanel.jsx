@@ -3,9 +3,7 @@ import { FiBarChart2 } from 'react-icons/fi';
 
 const ResultsPanel = () => {
   const electionResults = [
-    { id: 1, name: 'الانتخابات الرئاسية 2024', winner: 'المرشح أ', turnout: '67%' },
-    { id: 2, name: 'انتخابات المجلس المحلي', winner: 'الحزب ب', turnout: '52%' },
-    { id: 3, name: 'استفتاء على تخطيط المدينة', result: 'تمت الموافقة', turnout: '48%' },
+    { id: 1, name: 'انتخابات البرلمان 2024', winner: 'القائمة أ', turnout: '67%' }
   ];
 
   return (
@@ -20,7 +18,7 @@ const ResultsPanel = () => {
                 <span>{result.winner || result.result}</span>
                 <FiBarChart2 className="mr-2" />
               </div>
-              <div className="text-sm text-gray-600 mb-4 bg-yellow-500 rounded-full w-40">
+              <div className="text-sm text-gray-600 mb-4 bg-yellow-500 rounded-full w-40 py-0.5 text-center">
                 نسبة المشاركة: {result.turnout}
               </div>
               <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium w-full">

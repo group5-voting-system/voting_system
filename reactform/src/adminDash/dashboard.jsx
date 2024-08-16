@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { FiHome, FiUsers, FiUserCheck, FiCalendar, FiPieChart, FiSettings } from 'react-icons/fi';
+import { FiHome, FiUsers, FiUserCheck, FiCalendar, FiPieChart } from 'react-icons/fi';
 import OverviewPanel from './overveiw';
 import VotersPanel from './votespanel';
 import CandidatesPanel from './candidatespanel';
 import ElectionsPanel from './elictionspanel';
 import ResultsPanel from './resultspanel';
-import SettingsPanel from './settings';
+
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -22,8 +22,6 @@ const AdminDashboard = () => {
         return <ElectionsPanel />;
       case 'results':
         return <ResultsPanel />;
-      case 'settings':
-        return <SettingsPanel />;
       default:
         return <OverviewPanel />;
     }
@@ -43,11 +41,10 @@ const AdminDashboard = () => {
               </div>
               <nav className="mt-5 flex-1 px-2 bg-gray-800 space-y-1">
                 <NavItem icon={FiHome} label="نظرة عامة" onClick={() => setActiveTab('overview')} active={activeTab === 'overview'} />
-                <NavItem icon={FiUsers} label="مقترعين" onClick={() => setActiveTab('voters')} active={activeTab === 'voters'} />
+                <NavItem icon={FiUsers} label="ناخبين" onClick={() => setActiveTab('voters')} active={activeTab === 'voters'} />
                 <NavItem icon={FiUserCheck} label="مرشحين" onClick={() => setActiveTab('candidates')} active={activeTab === 'candidates'} />
                 <NavItem icon={FiCalendar} label="إنتخابات" onClick={() => setActiveTab('elections')} active={activeTab === 'elections'} />
                 <NavItem icon={FiPieChart} label="النتائج" onClick={() => setActiveTab('results')} active={activeTab === 'results'} />
-                <NavItem icon={FiSettings} label="إعدادات" onClick={() => setActiveTab('settings')} active={activeTab === 'settings'} />
               </nav>
             </div>
             <div className="flex-shrink-0 flex bg-gray-700 p-4">
