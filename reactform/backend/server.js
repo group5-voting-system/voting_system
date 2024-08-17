@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const knex = require('knex')(require('./knexfile').development);
 const cors = require('cors');
+const debatesRouter = require('./models/router');
 
 const app = express();
 
@@ -61,6 +62,10 @@ app.get('/api/overview-stats', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+app.use('/api', debatesRouter);
+
+
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
