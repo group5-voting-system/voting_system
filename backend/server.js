@@ -8,10 +8,10 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use("/api/candidate-requests", candidateRequestRoutes);
-app.use("/api/local-lists", localListRoutes);
+// app.use("/api/candidate-requests", candidateRequestRoutes);
+// app.use("/api/local-lists", localListRoutes);
 
-app.use('/voting', votingRoutes);
+// app.use('/voting', votingRoutes);
 
 
 app.post('/api/submit-advertisement', async (req, res) => {
