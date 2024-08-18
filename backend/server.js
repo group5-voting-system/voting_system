@@ -101,6 +101,31 @@ app.get('/api/overview-stats', async (req, res) => {
 });
 
 
+app.get('/api/voters', async (req, res) => {
+  try {
+    const voters = await knex('USERS').select();
+    res.json(voters);
+  } catch (error) {
+    console.error('Error fetching voters:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.put('/api/voters/:id/email', async (req, res) => {
+  const { id } = req.params;
+  const { email } = req.body;
+  try {
+    await knex('USERS')
+      .where({ NATIONAL_ID: id })
+      .update({ EMAIL: email });
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error updating email:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 app.use('api', debatesRouter);
 
 const PORT = process.env.PORT || 5000;

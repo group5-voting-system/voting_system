@@ -12,6 +12,7 @@ import AdvertisementForm from './service form/advform';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  <AdminDashboard/>
+//  <ServiceForm/>
 );
 
 // If you want to start measuring performance in your app, pass a function

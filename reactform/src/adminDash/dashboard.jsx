@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { FiHome, FiUsers, FiUserCheck, FiCalendar, FiPieChart } from 'react-icons/fi';
 import OverviewPanel from './overveiw';
-import VotersPanel from './votespanel';
+// import VotersPanel from './votespanel';
 import CandidatesPanel from './candidatespanel';
 import ElectionsPanel from './elictionspanel';
 import ResultsPanel from './resultspanel';
+import Participated from './participated';
 
 
 const AdminDashboard = () => {
@@ -14,8 +15,8 @@ const AdminDashboard = () => {
     switch(activeTab) {
       case 'overview':
         return <OverviewPanel />;
-      case 'voters':
-        return <VotersPanel />;
+      case 'participated':
+        return <Participated/>;
       case 'candidates':
         return <CandidatesPanel />;
       case 'elections':
@@ -29,7 +30,7 @@ const AdminDashboard = () => {
   
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100 ">
       {/* Sidebar */}
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
@@ -41,7 +42,7 @@ const AdminDashboard = () => {
               </div>
               <nav className="mt-5 flex-1 px-2 bg-gray-800 space-y-1">
                 <NavItem icon={FiHome} label="نظرة عامة" onClick={() => setActiveTab('overview')} active={activeTab === 'overview'} />
-                <NavItem icon={FiUsers} label="ناخبين" onClick={() => setActiveTab('voters')} active={activeTab === 'voters'} />
+                <NavItem icon={FiUsers} label="ناخبين/مقترعين" onClick={() => setActiveTab('participated')} active={activeTab === 'participated'} />
                 <NavItem icon={FiUserCheck} label="مرشحين" onClick={() => setActiveTab('candidates')} active={activeTab === 'candidates'} />
                 <NavItem icon={FiCalendar} label="إنتخابات" onClick={() => setActiveTab('elections')} active={activeTab === 'elections'} />
                 <NavItem icon={FiPieChart} label="النتائج" onClick={() => setActiveTab('results')} active={activeTab === 'results'} />
