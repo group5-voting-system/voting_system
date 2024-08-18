@@ -6,16 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import ServiceForm from './service form/mulitformservices';
 import AdminDashboard from './adminDash/dashboard';
 import AdvertisementForm from './service form/advform';
-import DebateForm from './service form/debateform';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    {/* <AdvertisementForm/> */}
-    <ServiceForm/ >
-    {/* <AdminDashboard/> */}
-    {/* <DebateForm/> */}
-  </React.StrictMode>
+ <AdminDashboard/>
 );
 
 // If you want to start measuring performance in your app, pass a function

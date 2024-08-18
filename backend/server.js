@@ -2,16 +2,40 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const knex = require('knex')(require('./knexfile').development);
 const cors = require('cors');
+const debatesRouter = require('./routes/router');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
+
+
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 app.use(bodyParser.json());
 
 // app.use("/api/candidate-requests", candidateRequestRoutes);
 // app.use("/api/local-lists", localListRoutes);
 
 // app.use('/voting', votingRoutes);
+
+
+// const transporter = nodemailer.createTransport({
+//   host: 'smtp.mailtrap.io',
+//   port: 587,
+//   secure: false, // Use TLS
+//   auth: {
+//     user: 'mohamahasoun60@gmail.com',
+//     pass: 'Mes%3alnasel6ayba'
+//   }
+// });
+
+
+
+
+
+
 
 
 app.post('/api/submit-advertisement', async (req, res) => {
@@ -49,24 +73,35 @@ app.post('/api/submit-advertisement', async (req, res) => {
   }
 });
 
+
 app.get('/api/overview-stats', async (req, res) => {
   try {
-    const [totalVoters, totalLists, totalPartyLists] = await Promise.all([
-      knex('lists').sum('COUNT_OF_VOTES as total').first(),
-      knex('lists').count('* as total').first(),
-      knex('lists').where('LIST_TYPE', 'PARTY').count('* as total').first()
+    const [totalVoters, totalLocalLists, totalPartyLists] = await Promise.all([
+      knex('USERS').count('* as count').first(),
+      knex('LOCAL_LISTS').count('* as count').first(),
+      knex('PARTY_LISTS').count('* as count').first(),
+    ]);
+
+    const [sumLocalVotes, sumPartyVotes] = await Promise.all([
+      knex('LOCAL_LISTS').sum('COUNT_OF_VOTES as total').first(),
+      knex('PARTY_LISTS').sum('COUNT_OF_VOTES as total').first(),
     ]);
 
     res.json({
-      totalVoters: totalVoters.total || '0',
-      totalLists: totalLists.total || '0',
-      totalPartyLists: totalPartyLists.total || '0'
+      totalVoters: parseInt(totalVoters.count),
+      totalLocalLists: parseInt(totalLocalLists.count),
+      totalPartyLists: parseInt(totalPartyLists.count),
+      totalLocalVotes: parseInt(sumLocalVotes.total) || 0,
+      totalPartyVotes: parseInt(sumPartyVotes.total) || 0,
     });
   } catch (error) {
     console.error('Error fetching overview stats:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
+app.use('api', debatesRouter);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
