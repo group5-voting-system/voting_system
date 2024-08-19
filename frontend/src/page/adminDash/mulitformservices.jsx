@@ -1,14 +1,14 @@
 import React, {useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { useTimer } from '../adminDash/timecontext';
+// import { useTimer } from '../adminDash/timecontext';
 
 
 
 const ServiceForm = () => {
-    const { timeRemaining } = useTimer();
-    const [, forceUpdate] = useState();
-    console.log('Time remaining:', timeRemaining); 
+    // const { timeRemaining } = useTimer();
+    // const [, forceUpdate] = useState();
+    // console.log('Time remaining:', timeRemaining); 
   const [formType, setFormType] = useState('debate');
   const [debateFormData, setDebateFormData] = useState({
     DATE_OF_DEBATE: '',
@@ -99,14 +99,14 @@ const ServiceForm = () => {
 
 
 
-  useEffect(() => {
-    forceUpdate({});
-  }, [timeRemaining]);
+  // useEffect(() => {
+  //   forceUpdate({});
+  // }, [timeRemaining]);
 
-  if (timeRemaining !== null && timeRemaining <= 0) {
-    return <div>انتهى الوقت. الوصول إلى هذه الصفحة غير متاح.</div>;
-  }
- else return (
+  // if (timeRemaining !== null && timeRemaining <= 0) {
+  //   return <div>انتهى الوقت. الوصول إلى هذه الصفحة غير متاح.</div>;
+  // }
+ return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl" style={{ direction: 'rtl' }}>
       <div className="mb-6">
         <div className="relative w-full h-12 rounded-full bg-gray-200 cursor-pointer" onClick={toggleFormType}>

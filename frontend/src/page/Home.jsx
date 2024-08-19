@@ -1,17 +1,41 @@
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import img1 from "../assets/herovot.png";
 import img2 from "../assets/jorimg.jpg";
 import img3 from "../assets/voting.jpg";
 import CountdownTimer from "../comonamt/timer";
 import ElectoralDistricts from "../comonamt/ElectoralDistricts";
 import ChatbotComponent from "../chatbooks/ChatbotComponent";
+import { TimerProvider, useTimer } from "../comonamt/timecontext";
+import AdvertisementsSection from "./adminDash/forhomepage";
 
 const Home = () => {
-  return (
+  // const initialTime = {
+  //   days: 1,
+  //   hours: 0,
+  //   minutes: 0,
+  //   seconds: 12,
+  // };
+
+//   return (
+//     <TimerProvider initialTime={initialTime}>
+//       <HomeContent />
+//     </TimerProvider>
+//   );
+// };
+
+// const HomeContent = () => {
+//   const { timeRemaining } = useTimer();
+
+//   if (timeRemaining <= 0) {
+//     return <div className="flex justify-center text-red-600">انتهى وقت الانتخابات هذه الصفحة غير متاحة</div>;
+//   }
+
+ return (
     <div className="container mx-auto p-4">
       {/* Building image */}
       <div className="mb-8 h-screen relative">
-        <CountdownTimer />
+        {/* <CountdownTimer /> */}
         <img
           src={img1}
           alt="Election Building"
@@ -64,31 +88,14 @@ const Home = () => {
 
       {/* Electoral districts */}
       <div className="mb-8 mt-10">
-        <ElectoralDistricts />
-      </div>
+    <ElectoralDistricts />
+     </div>
 
-      {/* Candidate announcements */}
+      
       <h2 className="text-3xl mb-4 text-center font-semibold">
         الإعلانات الجديدة
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[1, 2, 3].map((index) => (
-          <div
-            key={index}
-            className="border p-4 bg-white rounded-lg shadow-lg transform transition-transform hover:scale-105"
-          >
-            <button className="bg-red-600 text-white px-4 py-2 mt-2 w-full rounded-lg transition-transform hover:bg-red-700">
-              قائمة نمو
-            </button>
-            <img
-              src={img2} // استخدام الصورة المستوردة
-              alt={`Candidate ${index}`}
-              className="w-full h-32 object-cover mb-2 rounded-lg"
-            />
-            <h3 className="font-bold text-lg mb-2">اسم المرشح</h3>
-          </div>
-        ))}
-      </div>
+     <AdvertisementsSection/>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20">
         {[1, 2, 3].map((index) => (
           <div

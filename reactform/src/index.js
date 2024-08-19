@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ServiceForm from './service form/mulitformservices';
-import AdminDashboard from './adminDash/dashboard';
-import AdvertisementForm from './service form/advform';
+
+// import Home from './Home';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- <AdminDashboard/>
-//  <ServiceForm/>
+    
+  <App/>
+    
+    
 );
 
 // If you want to start measuring performance in your app, pass a function

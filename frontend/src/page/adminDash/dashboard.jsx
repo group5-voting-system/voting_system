@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FiHome, FiUsers, FiUserCheck, FiCalendar, FiPieChart, FiClock } from 'react-icons/fi';
+// import { FiHome, FiUsers, FiUserCheck, FiCalendar, FiPieChart, FiClock } from 'react-icons/fi';
+import { FiHome,FiUsers,FiUserCheck, FiCalendar, FiPieChart, FiClock, FiSliders } from 'react-fi';
 import OverviewPanel from './overveiw';
 import CandidatesPanel from './candidatespanel';
 import ElectionsPanel from './elictionspanel';
@@ -8,6 +9,7 @@ import Participated from './participated';
 // import TimerControl from './TimerControl';
 import TimerControl from './timercontrol';
 import { TimerProvider } from './timecontext';
+import Requests from './requests';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -26,6 +28,8 @@ const AdminDashboard = () => {
         return <ResultsPanel />;
       case 'timer':
         return <TimerControl />;
+        case 'requests':
+          return <Requests/>
       default:
         return <OverviewPanel />;
     }
@@ -54,6 +58,7 @@ const AdminDashboard = () => {
                 <NavItem icon={FiCalendar} label="إنتخابات" onClick={() => setActiveTab('elections')} active={activeTab === 'elections'} />
                 <NavItem icon={FiPieChart} label="النتائج" onClick={() => setActiveTab('results')} active={activeTab === 'results'} />
                 <NavItem icon={FiClock} label="تحكم المؤقت" onClick={() => setActiveTab('timer')} active={activeTab === 'timer'} />
+                <NavItem icon={FiSliders} label="خدمات" onClick={() => setActiveTab('requests')} active={activeTab === 'requests'} />
               </nav>
             </div>
             <div className="flex-shrink-0 flex bg-gray-700 p-4">

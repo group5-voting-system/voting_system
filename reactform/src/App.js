@@ -1,6 +1,9 @@
+import AdminDashboard from './adminDash/dashboard';
+import { TimerProvider } from './adminDash/timecontext';
 import './App.css';
 
 import React, { useState } from 'react';
+import ServiceForm from './service form/mulitformservices';
 
 
 function App() {
@@ -8,7 +11,13 @@ function App() {
 
 
   return (
-   <h1>asdasd</h1>
+<>
+
+    <TimerProvider initialDuration={30}>
+        <AdminDashboard/>
+   <ServiceForm/>
+    </TimerProvider>
+</>
   );
 }
 
