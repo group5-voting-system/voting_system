@@ -280,6 +280,20 @@ app.put('/api/approve-advertisement/:id', async (req, res) => {
   }
 });
 
+app.put('/api/toggle-advertisement/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const ad = await knex('ELECTION_ADVERTISEMENTS').where({ ID: id }).first();
+    const newStatus = ad.STATUS === 'APPROVED' ? 'PENDING' : 'APPROVED';
+    await knex('ELECTION_ADVERTISEMENTS')
+      .where({ ID: id })
+      .update({ STATUS: newStatus });
+    res.json({ message: 'Advertisement status toggled successfully', newStatus });
+  } catch (error) {
+    console.error('Error toggling advertisement status:', error);
+    res.status(500).json({ error: 'An error occurred while toggling the advertisement status', details: error.message });
+  }
+});
 
 
 app.use('api', debatesRouter);

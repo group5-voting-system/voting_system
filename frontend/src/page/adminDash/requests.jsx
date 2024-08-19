@@ -56,10 +56,14 @@ function Requests() {
 >
     {ad.STATUS === 'APPROVED' ? 'Approved' : isApproving ? 'Approving...' : 'Approve'}
 </button>
+
+{/* get back and change it to pending when clicking on it  */}
+
+
 <button
             onClick={() => toggleAdStatus(ad.ID)}
             className={`px-4 py-2 rounded ${
-              ad.STATUS === 'APPROVED'
+              ad.STATUS === 'pending'
                 ? 'bg-yellow-500 hover:bg-yellow-600'
                 : 'bg-green-500 hover:bg-green-600'
             } text-white`}
